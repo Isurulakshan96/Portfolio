@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isuru Lakshan - Portfolio</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #6e44ff; /* Neon Purple */
+      --secondary-color: #00d9ff; /* Electric Blue */
+      --background-color: #1a1a1a; /* Dark Background */
+      --text-color: #ffffff; /* White Text */
+      --accent-color: #ff2e63; /* Neon Pink */
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--secondary-color);
+    }
+
+    a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--text-color);
+      padding: 60px 20px;
+      text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 700;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-size: 1.5rem;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: var(--text-color);
+      margin: 0 20px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* About Section */
+    #about {
+      background: var(--background-color);
+    }
+
+    #about img {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      border: 5px solid var(--primary-color);
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    #about p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    /* Portfolio Section */
+    #portfolio {
+      background: var(--background-color);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .portfolio-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .portfolio-item h3 {
+      margin: 15px 0 10px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .portfolio-item p {
+      padding: 0 15px 15px;
+      font-size: 1rem;
+    }
+
+    /* Services Section */
+    #services {
+      background: var(--background-color);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .service-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px; /* Reduced padding for better spacing */
+      border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px; /* Ensures consistent height */
+    }
+
+    .service-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+      word-wrap: break-word; /* Ensures long words break and wrap */
+    }
+
+    .service-item p {
+      font-size: 1rem;
+      margin: 0; /* Remove default margin */
+      word-wrap: break-word; /* Ensures long words break and wrap */
+    }
+
+    /* Mobile View: One service item per row */
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr; /* One column for mobile */
+      }
+
+      .service-item {
+        padding: 15px; /* Further reduce padding for mobile */
+      }
+
+      .service-item h3 {
+        font-size: 1.3rem; /* Slightly smaller font size for mobile */
+      }
+
+      .service-item p {
+        font-size: 0.9rem; /* Slightly smaller font size for mobile */
+      }
+    }
+
+    /* Testimonials Section */
+    #testimonials {
+      background: var(--background-color);
+    }
+
+    .testimonial-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 800px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimonial-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .testimonial-item p {
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+
+    .testimonial-item h4 {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+    }
+
+    /* Contact Section */
+    #contact {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      padding: 100px 20px 60px;
+    }
+
+    .contact-form-widget {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form-widget h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      font-size: 2rem;
+    }
+
+    .contact-form-widget input,
+    .contact-form-widget textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+
+    .contact-form-widget input::placeholder,
+    .contact-form-widget textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .contact-form-widget button {
+      width: 100%;
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form-widget button:hover {
+      background-color: #ff1a4f;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--background-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer a {
+      color: var(--accent-color);
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Isuru Lakshan</h1>
+    <p>WordPress Designer & Developer | 2025</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <img src="Images\Profile Picture.jpg" alt="Isuru Lakshan">
+    <p>Hi, I'm Isuru Lakshan, a passionate WordPress designer and developer with over 5 years of experience. I specialize in creating modern, responsive, and high-performance websites using the latest technologies like React, Node.js, and advanced CSS. Let's build something amazing together!</p>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="Images\2.png" alt="Project 1">
+        <h3>E-Learning Website</h3>
+        <p>pastpapers.lk – An educational website providing exam past papers for students.</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="Images\1.png" alt="Project 2">
+        <h3>Corporate Website</h3>
+        <p>pmtasia.com - Developed a responsive corporate website with a custom WordPress theme and SEO optimization.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\3.png" alt="Project 3">
+        <h3>Toursim & Food Website</h3>
+        <p>arugambay.pizzahub.lk – A food and tourism website featuring delicious pizzas and travel experiences in Arugam Bay.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\4.png" alt="Project 4">
+        <h3>Torism Website</h3>
+        <p>udawalawatours.com – A tourism website offering safari and travel services in Udawalawe National Park.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\5.png" alt="Project 5">
+        <h3>E-Commerce Website</h3>
+        <p>regencyteas.com – A corporate website showcasing premium tea products from Regency Teas.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\6.png" alt="Project 6">
+        <h3>Tourism Website</h3>
+        <p>whalewatchingmirissa.lk – A tourism website promoting whale-watching tours in Mirissa, Sri Lanka.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\7.png" alt="Project 7">
+        <h3>Business Website</h3>
+        <p>dumindusalt.com – A business website for Dumindu Salt, providing information on salt production and sales.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\8.png" alt="Project 8">
+        <h3>E-Learning Platform</h3>
+        <p>ehub.lk – A combined educational platform offering past papers and tuition class details.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\9.png" alt="Project 9">
+        <h3>Tourism Website</h3>
+        <p>yalashadow.lk – A tourism website featuring travel experiences and accommodations near Yala National Park.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\10.png" alt="Project 10">
+        <h3>Tourism Website</h3>
+        <p>anythingsrilanka.com – A travel website promoting tourism experiences across Sri Lanka.</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\11.png" alt="Project 11">
+        <h3>E-Commerce Website</h3>
+        <p>ceylonayurvedaonline.com - An e-commerce website selling Ayurvedic products online</p>
+      </div>
+	  <div class="portfolio-item">
+        <img src="Images\12.png" alt="Project 12">
+        <h3>E-Commerce Website</h3>
+        <p>citygemsjewelry.com – A website offering a wide range of jewelry products with secure online shopping.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Services</h2>
+    <div class="services-grid">
+      <div class="service-item">
+        <h3>WordPress Design</h3>
+        <p>Custom WordPress themes tailored to your brand's identity.</p>
+      </div>
+      <div class="service-item">
+        <h3>Plugin Development</h3>
+        <p>Custom plugins to extend your website's functionality.</p>
+      </div>
+      <div class="service-item">
+        <h3>SEO Optimization</h3>
+        <p>Improve your website's visibility and ranking on search engines.</p>
+      </div>
+	  <div class="service-item">
+        <h3> E-commerce Solutions (WooCommerce)</h3>
+        <p>WooCommerce Store Setup, Product Management, Payment Gateway Integration</p>
+      </div>
+	  <div class="service-item">
+        <h3>SEO & Performance Optimization</h3>
+        <p>On-Page SEO, Speed Optimization, Mobile Responsiveness</p>
+      </div>
+	  <div class="service-item">
+        <h3>Security & Maintenance</h3>
+        <p>Website Security, Backup & Recovery, Regular Updates</p>
+      </div>
+	  <div class="service-item">
+        <h3>Website Migration & Hosting Services</h3>
+        <p>Moving WordPress sites from one host to another, Domain & Hosting Setup</p>
+      </div>
+	  <div class="service-item">
+        <h3>Troubleshooting & Bug Fixing</h3>
+        <p>Resolving issues like broken themes or plugin conflicts, Website Debugging</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial-item">
+      <p>"Isuru is an incredible developer! He delivered the project on time and exceeded our expectations."</p>
+      <h4>- Mr.Chaminda, CEO of Whale Watching Mirissa</h4>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-form-widget">
+      <h3>Contact Us</h3>
+      <form action="https://formspree.io/f/xwpkjvpe" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Isuru Lakshan. All rights reserved. | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <!-- JavaScript for Smooth Scrolling -->
+  <script>
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
